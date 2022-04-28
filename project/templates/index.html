@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block title %}
+Project Detail
+{% endblock %}
+{% block content %}
+
+        {% if messages %}
+                      {% for message in messages %}
+                                <div class="alert alert-info">
+                                    {{ message }}
+                                </div>
+                      {% endfor %}
+          {% endif %}
+ 
+         
+          <div class="container">
+            
+            <div class="row justify-content-center">
+                
+              <div class="row">
+              {% for job in jobs %}
+              
+                
+                <!-- end col -->
+            
+                <!-- end col -->
+                <div class="col-xl-6 col-lg-6">
+                  <div class="card-style-5 mb-30">
+                    <div class="card-image">
+                      <a href="#0">
+                        <img
+                          src="{{job.job_image.url}}"
+                          alt=""
+                        />
+                      </a>
+                    </div>
+                    <div class="card-content">
+                      <h4><a href="#0"> Need {{job.job_title}} </a></h4>
+                      <small>{{job.created_at}}</small>
+                      <small>Posted by..<cite title="Source Title">{{job.employee_id}}</cite></small>
+                      <hr>
+                      <p>
+                        {{job.job_description}}
+                      </p>
+                      <p class="card-text">sallary : {{job.job_salary}}</p>
+                        <p class="card-text">location : {{job.job_location}}</p>
+                      <a href="{% url 'project:apply-job' job.id %}" class="main-btn primary-btn btn-hover"
+                        >Apply here</a
+                      >
+                    </div>
+                  </div>
+                  <!-- end card -->
+                </div>
+                <!-- end col -->
+             
+              
+              {% endfor %}
+            </div>
+                
+            </div>
+            
+    
+        </div>
+       
+{% endblock %}

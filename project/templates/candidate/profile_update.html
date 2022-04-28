@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}
+Project Detail
+{% endblock %}
+{% block content %}
+{% load crispy_forms_filters %}
+    <div class="px-4 py-5 my-5 text-center row justify-content-center">
+        <h1 class="display-5 fw-bold">Update Profile</h1>
+        <div class="col-md-5 shadow p-4">
+          {% if messages %}
+                      {% for message in messages %}
+                                <div class="alert alert-info">
+                                    {{ message }}
+                                </div>
+                      {% endfor %}
+          {% endif %}
+          <form method="post" action="" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <input type="submit" class="btn btn-primary">
+          </form>
+
+        </div>
+       
+      </div>
+{% endblock %}

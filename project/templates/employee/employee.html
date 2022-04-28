@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block title %}
+Employee Home
+{% endblock %}
+{% block content %}
+    
+        
+    {% if messages %}
+                    {% for message in messages %}
+                            <div class="alert alert-info">
+                                {{ message }}
+                            </div>
+                    {% endfor %}
+    {% endif %}
+
+
+    <div class="container">
+        <div class="col-md-5">
+            <a class="btn btn-success"  href="{% url 'project:add-job'%}" role="button">Add New Job</a>
+        </div>
+        <div class="row justify-content-center">
+            
+            
+            {% for job in jobs %}
+            <div class="col-md-8 mt-2 mb-2">
+                <div class="card">
+                    <div class="card-header">
+                      {{job.job_company}} Need {{job.job_title}} ....<cite title="Source Title">{{job.created_at}} </cite>
+                    </div>
+                    <div class="card-body">
+                      <p class="card-text">{{job.job_description}}</p>
+                      <p class="card-text">sallary : {{job.job_salary}}</p>
+                      <p class="card-text">location : {{job.job_location}}</p>
+                      <a href="{% url 'project:job-update' job.id %}" class="btn btn-primary">update</a>
+                    </div>
+                    <div class="card-footer text-muted text-right">
+                      <div class="row">
+                        <div class="col-6">
+                          Applied Candidate Count : {{job.new_job.count}}
+                        </div>
+                        <div class="col-6">
+                            Applied Candidate Details : <a href="{% url 'project:see-deatils' job.id %}">See Details</a>
+                        </div>
+                      </div>
+                      
+                      
+                    </div>
+                  </div>
+            </div>
+            {% endfor %}
+            
+        </div>
+        
+
+    </div>
+    
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}
+Project Detail
+{% endblock %}
+{% block content %}
+    <div class="px-4 py-5 my-5 text-center row justify-content-center">
+        <h1 class="display-5 fw-bold">Candidate Register</h1>
+        <div class="col-md-5">
+          {% if messages %}
+                      {% for message in messages %}
+                                <div class="alert alert-info">
+                                    {{ message }}
+                                </div>
+                      {% endfor %}
+          {% endif %}
+          <form method="post" action="{% url 'project:candidate-register' %}">
+            {% csrf_token %}
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Username</label>
+              <input type="text" name="username" class="form-control"  required>
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Candidate Phone</label>
+              <input type="number" name="phone" class="form-control"  required>
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Candidate Email</label>
+              <input type="email" name="email" class="form-control"  required>
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Password</label>
+              <input type="password" name="pass1" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Confirm Password</label>
+              <input type="password" name="pass2" class="form-control" required>
+            </div>
+          
+            <button type="submit" class="btn btn-primary">Submit</button>
+        
+          </form>
+
+        </div>
+       
+      </div>
+{% endblock %}

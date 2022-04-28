@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block title %}
+Project Detail
+{% endblock %}
+{% block content %}
+   
+
+<div class="container">
+
+  <div class="row">
+    {% if messages %}
+    {% for message in messages %}
+              <div class="alert alert-info">
+                  {{ message }}
+              </div>
+    {% endfor %}
+  {% endif %}
+
+    <div class="col-md-4">
+      <h6>My details</h6>
+      <ul class="list-group">
+        <li class="list-group-item">Name : {{cand.candidate_name}}</li>
+        <li class="list-group-item">Email : {{cand.candidate_email}}</li>
+        <li class="list-group-item">Phone : {{cand.candidate_phone}}</li>
+        
+        {% if cand.candidate_location == None %}
+        <li class="list-group-item">Location : Not update yet </li>
+        {% else %}
+        <li class="list-group-item">Location : {{cand.candidate_location}}</li>
+        {% endif %}
+
+        {% if cand.candidate_experience == None %}
+        <li class="list-group-item">Experience : Not update yet</li>
+        {%  else %}
+        <li class="list-group-item">Experience : {{cand.candidate_experience}}</li>
+        {% endif %}
+        {% if cand.candidate_resume  %}
+        <li class="list-group-item">Resume : {{cand.candidate_resume}}</li>
+        {% else %}
+        <li class="list-group-item">Resume : Not update yet</li>
+        {% endif %}
+        <li class="list-group-item"> <a href="{% url 'project:profile-update' cand.id %}">Upadte Profile</a> </li>
+      </ul>
+    </div>
+    <div class="col-md-6">
+      <h6>Applied Job</h6>
+      {% if jobs %}
+      {% for job in jobs %}
+          <p>
+            {{job.new_job_id.job_title}}
+          </p>     
+      {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+
+</div>
+
+{% endblock %}
