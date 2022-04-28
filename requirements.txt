@@ -7,6 +7,3 @@ django-jazzmin==2.5.0
 pillow==9.1.0
 pylint==2.13.7
 tox==3.25.0
-django-storages==1.12.3
-boto3==1.22.1
-mysqlclient==2.1.0
