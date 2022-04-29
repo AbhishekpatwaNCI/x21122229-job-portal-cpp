@@ -6,3 +6,4 @@
     - [ ] @permission_required
     - [ ] template permissions
     - [ ] custom permission
+    - [ ]
